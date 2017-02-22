@@ -2,6 +2,12 @@
 <img src="{{blog.image.url}}">
 <div style="width:100%; position:relative;"> <a>{{blog.text}}</a> </div>
 
+<form method="post" action="{% url 'blog:display' blog.id %}">
+  {% csrf_token %}
+  <input type="text" name="txt">
+  <button type="submit" style="height:50px; width:80px;"> comment</button>
+</form>
+
 {% for comment in comments %}
 <div style="width:50%;left:0;position:relative;padding:25px;border:1 px solid;"><b>-{{comment.user}}</b><br> <b>{{comment.title}}</b><br>&nbsp;&nbsp;{{comment.text}}<br> </div>
 {% endfor %}

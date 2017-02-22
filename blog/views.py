@@ -8,5 +8,8 @@ def main(request):
 
 def display(request, blog_id):
     blog = get_object_or_404(Blog, id=blog_id)
+    if request.method == "POST":
+        comment = Comment(text=request.POST.get('txt','anan'),user=request.user,blog=blog,title="comment")
+        comment.save()
     comments = blog.comment_set.all()
     return render(request,"display.html",{'blog' : blog, 'comments':comments})
