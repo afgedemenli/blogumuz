@@ -1,0 +1,10 @@
+<ul>
+
+  {% for blog in all_blogs %}
+
+    <li>
+      <a>{{forloop.counter}} - {{blog.title}}</a> - <a><b>{{blog.user}}</b></a> <br><br>
+    </li>
+
+  {% endfor %}
+</ul>
